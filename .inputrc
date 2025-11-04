@@ -1,0 +1,36 @@
+$include /etc/inputrc
+
+# uses the colours from LS_COLOURS
+set colored-stats on
+
+#set editing-mode vi
+set show-mode-in-prompt on
+
+# virtual console uses different escape codes
+$if term=linux
+	set vi-ins-mode-string \1\e[?0c\2
+	set vi-cmd-mode-string \1\e[?8c\2
+$else
+	set vi-ins-mode-string \1\e[6 q\2
+	set vi-cmd-mode-string \1\e[2 q\2
+$endif
+$if mode=vi
+	set keymap vi-command
+		# these are for vi-command mode
+		"\e[A": history-search-backward
+		"\e[B": history-search-forward
+		j: history-search-forward
+		k: history-search-backward
+	set keymap vi-insert
+		# these are for vi-insert mode
+		"\e[A": history-search-backward
+		"\e[B": history-search-forward
+$endif
+
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+
+set completion-prefix-display-length 3
+
+# sets every completion which is a symbolic link to a directory to have a slash appended
+set mark-symlinked-directories on
