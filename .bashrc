@@ -25,3 +25,6 @@ PS1='[\u@\h \W]\$ '
 
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
+echo
+fastfetch
